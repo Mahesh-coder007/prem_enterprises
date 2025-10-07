@@ -66,6 +66,15 @@
         .toggle-icon.active {
             transform: rotate(45deg); /* Rotates the plus sign into an X/minus sign */
         }
+        /* Make product detail images look clickable/selectable */
+        .product-thumb {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .product-thumb:hover, .product-thumb.active {
+            border-color: #4f46e5;
+        }
     </style>
 </head>
 <body class="antialiased text-gray-800">
@@ -82,17 +91,17 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center py-4 container-padding">
             <!-- Logo -->
-            <a href="#" class="text-3xl font-extrabold text-indigo-700 tracking-tight">
+            <a href="#" onclick="showHome()" class="text-3xl font-extrabold text-indigo-700 tracking-tight">
                 Pram Enterprises
             </a>
             
             <!-- Navigation Links (Hidden on small screens, shown as menu button) -->
             <nav class="hidden md:flex space-x-8 font-medium">
-                <a href="#products" class="text-gray-600 hover:text-indigo-600 transition duration-150">Designs</a>
-                <a href="#bulk-orders" class="text-gray-600 hover:text-indigo-600 transition duration-150">Bulk Orders</a>
-                <a href="#our-work" class="text-gray-600 hover:text-indigo-600 transition duration-150">Our Work</a>
-                <a href="#faq" class="text-gray-600 hover:text-indigo-600 transition duration-150">FAQ</a>
-                <a href="#contact-form" class="text-gray-600 hover:text-indigo-600 transition duration-150">Contact</a>
+                <a href="#products" onclick="showHome(event)" class="text-gray-600 hover:text-indigo-600 transition duration-150">Designs</a>
+                <a href="#bulk-orders" onclick="showHome(event)" class="text-gray-600 hover:text-indigo-600 transition duration-150">Bulk Orders</a>
+                <a href="#our-work" onclick="showHome(event)" class="text-gray-600 hover:text-indigo-600 transition duration-150">Our Work</a>
+                <a href="#faq" onclick="showHome(event)" class="text-gray-600 hover:text-indigo-600 transition duration-150">FAQ</a>
+                <a href="#contact-form" onclick="showHome(event)" class="text-gray-600 hover:text-indigo-600 transition duration-150">Contact</a>
             </nav>
 
             <!-- Cart Icon and Count (Kept for retail/sample orders) -->
@@ -103,563 +112,11 @@
         </div>
     </header>
 
-    <!-- Hero Section (Modified for Custom Printing Focus) -->
-    <section class="bg-indigo-500 bg-opacity-90 text-white py-20 md:py-32 shadow-xl">
-        <div class="max-w-7xl mx-auto text-center container-padding">
-            <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight">
-                Custom Printing Made Easy. <span class="block mt-2">Your Design. Our Quality.</span>
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 font-light max-w-3xl mx-auto">
-                Upload your logo, start your order, or explore professional printing options for any quantity.
-            </p>
-            <a href="#contact-form" class="inline-block bg-white text-indigo-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
-                Start Your Custom Project Today
-            </a>
-        </div>
-    </section>
+    <!-- Main Content Container -->
+    <div id="main-content">
+        <!-- Home page sections will be loaded here by default -->
+    </div>
 
-    <!-- Products Section (UPDATED to match user's Custom Print Category/Layout) -->
-    <section id="products" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto container-padding">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 text-gray-900">
-                Men's Custom Print T-Shirts
-            </h2>
-            <p class="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Select your blank garment style below. Prices shown are for the blank item only.
-            </p>
-
-            <!-- Product Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                
-                <!-- Product Card 1: Unisex Classic Crew T-Shirt -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
-                    <img src="https://placehold.co/600x750/ffffff/000000?text=Custom+Print+Tee" 
-                         alt="Unisex Classic Crew T-Shirt" 
-                         class="w-full h-auto object-cover rounded-t-xl"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
-                    <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Classic Crew T-Shirt</h3>
-                        <div class="flex justify-center items-center space-x-1 mb-2">
-                             <div class="w-4 h-4 rounded-full bg-red-600 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-black shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-yellow-400 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-blue-600 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-white shadow border border-gray-300"></div>
-                             <div class="text-xs text-gray-500 ml-1">+more</div>
-                        </div>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹160.00</p>
-                        
-                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
-                            Product Details 
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
-                            Get Free Quote
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product Card 2: Unisex Oversized Classic T-Shirt -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
-                    <img src="https://placehold.co/600x750/dbeafe/1e3a8a?text=Oversized+Tee" 
-                         alt="Unisex Oversized Classic T-Shirt" 
-                         class="w-full h-auto object-cover rounded-t-xl"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
-                    <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Oversized Classic T-Shirt</h3>
-                        <div class="flex justify-center items-center space-x-1 mb-2">
-                             <div class="w-4 h-4 rounded-full bg-black shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-red-600 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-yellow-400 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-blue-600 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-pink-400 shadow border border-gray-300"></div>
-                             <div class="text-xs text-gray-500 ml-1">+more</div>
-                        </div>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹240.00</p>
-                        
-                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
-                            Product Details 
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
-                            Get Free Quote
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product Card 3: Unisex Acid Washed Oversized Tee -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
-                    <img src="https://placehold.co/600x750/264653/ffffff?text=Acid+Wash+Tee" 
-                         alt="Unisex Acid Washed Oversized Tee" 
-                         class="w-full h-auto object-cover rounded-t-xl"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
-                    <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Acid Washed Oversized Tee</h3>
-                        <div class="flex justify-center items-center space-x-1 mb-2">
-                             <div class="w-4 h-4 rounded-full bg-gray-700 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-green-700 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-white shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-purple-700 shadow border border-gray-300"></div>
-                             <div class="text-xs text-gray-500 ml-1">+more</div>
-                        </div>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹340.00</p>
-                        
-                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
-                            Product Details 
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
-                            Get Free Quote
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product Card 4: Unisex Acid Washed Hoodie -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
-                    <img src="https://placehold.co/600x750/1f2937/ffffff?text=Acid+Wash+Hoodie" 
-                         alt="Unisex Acid Washed Hoodie" 
-                         class="w-full h-auto object-cover rounded-t-xl"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
-                    <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Acid Washed Hoodie</h3>
-                        <div class="flex justify-center items-center space-x-1 mb-2">
-                             <div class="w-4 h-4 rounded-full bg-gray-800 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-pink-400 shadow border border-gray-300"></div>
-                             <div class="w-4 h-4 rounded-full bg-green-700 shadow border border-gray-300"></div>
-                             <div class="text-xs text-gray-500 ml-1">+more</div>
-                        </div>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹650.00</p>
-                        
-                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
-                            Product Details 
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
-                            Get Free Quote
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- CTA to All Products -->
-            <div class="text-center mt-16">
-                <a href="#contact-form" class="inline-block text-lg text-indigo-600 font-semibold border-b-2 border-indigo-600 pb-1 hover:text-indigo-800 transition duration-200">
-                    Ready to use your own design? Start a quote &rarr;
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- New Section 1: Why Choose Us / Value Proposition -->
-    <section class="bg-white py-16 md:py-24 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto container-padding text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
-                The Pram Enterprises Promise
-            </h2>
-            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-                Commitment to quality, unique style, and thoughtful production.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1: Premium Quality -->
-                <div class="p-6 rounded-xl bg-indigo-50 shadow-md">
-                    <div class="mb-4 text-indigo-600 flex justify-center">
-                        <!-- Quality Icon (T-Shirt/Stitch) -->
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m-9 0V3h10v2M9 14h6m-6 4h6m-6 4h6"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">Premium Feel</h3>
-                    <p class="text-gray-600">Our T-shirts are made from pre-shrunk, ultra-soft combed cotton for maximum comfort and durability.</p>
-                </div>
-
-                <!-- Feature 2: Exclusive Designs -->
-                <div class="p-6 rounded-xl bg-indigo-50 shadow-md">
-                    <div class="mb-4 text-indigo-600 flex justify-center">
-                        <!-- Design/Art Icon (Palette/Brush) -->
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v2.5m0 0l-2 3h4m-4 3h4m0-3l2-3h-4"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5l-4 4-2.5 2.5L12 18l6.5-6.5L18 8.5l-4-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">Original Art</h3>
-                    <p class="text-gray-600">We handle complex design files and ensure vibrant, accurate color reproduction for your brand or idea.</p>
-                </div>
-
-                <!-- Feature 3: Fast & Free Shipping -->
-                <div class="p-6 rounded-xl bg-indigo-50 shadow-md">
-                    <div class="mb-4 text-indigo-600 flex justify-center">
-                        <!-- Delivery/Shipping Icon (Truck) -->
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">Worry-Free Buying</h3>
-                    <p class="text-gray-600">Free shipping on all custom orders over $500, plus guaranteed quality checks before final shipment.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW SECTION 2: Explore Our Works (Gallery) -->
-    <section id="our-work" class="py-16 md:py-24 bg-gray-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto container-padding text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-gray-900">
-                Explore Some Of Our Works
-            </h2>
-            <p class="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                A gallery of finished client projects showcasing different techniques: puff print, embroidery, screen print, and high-detail DTG.
-            </p>
-
-
-            <!-- Gallery Grid (2x4 or 4x2 depending on screen size) -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                <!-- Gallery Item 1: Polo Tee (Be Kind) -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/1f2937/fcd34d?text=Embroidered+Logo" 
-                         alt="Be Kind Polo Print" 
-                         class="w-full h-auto object-cover">
-                </div>
-                <!-- Gallery Item 2: Retro Hoodie (TV) -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/000000/f87171?text=DTG+Hoodie+Art" 
-                         alt="Retro TV Heart Hoodie" 
-                         class="w-full h-auto object-cover">
-                </div>
-                <!-- Gallery Item 3: Script Print (Deep Breath) -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/000000/e5e7eb?text=Puff+Print+Detail" 
-                         alt="3D Script Puff Print" 
-                         class="w-full h-auto object-cover">
-                </div>
-                <!-- Gallery Item 4: Close Up Print (Vibrant) -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/1f2937/fbbf24?text=Screen+Print+Vibrancy" 
-                         alt="Vibrant Detail Print Close-up" 
-                         class="w-full h-auto object-cover">
-                </div>
-                <!-- Gallery Item 5: Flower Hoodie -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/ede9fe/f87171?text=Embroidery+Sample" 
-                         alt="Minimalist Flower Hoodie" 
-                         class="w-full h-auto object-cover">
-                </div>
-                <!-- Gallery Item 6: Motorbike Art -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/1e3a8a/ef4444?text=Screen+Print+Art" 
-                         alt="Sunset Motorbike Graphic Tee" 
-                         class="w-full h-auto object-cover">
-                </div>
-                <!-- Gallery Item 7: Sleeve Print -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/000000/9ca3af?text=Sleeve+Branding" 
-                         alt="Sleeve Typography Print" 
-                         class="w-full h-auto object-cover">
-                </div>
-                <!-- Gallery Item 8: Bold Red Print -->
-                <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
-                    <img src="https://placehold.co/400x400/dc2626/ffffff?text=Logo+Placement" 
-                         alt="Bold Red and White Print" 
-                         class="w-full h-auto object-cover">
-                </div>
-            </div>
-            
-            <a href="#contact-form" class="inline-block mt-10 bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
-                Ready to Print? Send Us Your Files &rarr;
-            </a>
-        </div>
-    </section>
-
-    <!-- New Section 3: Bulk Orders / Custom Printing (Based on user image data) -->
-    <section id="bulk-orders" class="py-16 md:py-24 bg-gray-100 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto container-padding text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
-                Bulk T-Shirt Printing Pricing
-            </h2>
-            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-                **Seller Benefit:** Clear pricing reduces inquiry volume. **Customer Benefit:** Transparent cost structure for planning.
-            </p>
-
-            <!-- Pricing Table -->
-            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
-                <div class="grid grid-cols-3 sm:grid-cols-4 font-bold text-lg text-white bg-indigo-700 p-4 bulk-table-header">
-                    <div class="text-left">Quantity</div>
-                    <div class="text-center">Print Colors</div>
-                    <div class="text-right">Per Unit Cost</div>
-                    <div class="text-right">Total Cost (Approx.)</div>
-                </div>
-                
-                <!-- Pricing Row 1 -->
-                <div class="grid grid-cols-3 sm:grid-cols-4 items-center border-b border-gray-100 p-4 hover:bg-indigo-50 transition duration-150 bulk-table-row">
-                    <div class="text-left font-semibold text-lg">50+</div>
-                    <div class="text-center text-gray-600">Up to 3</div>
-                    <div class="text-right font-medium text-gray-800">₹210</div>
-                    <div class="text-right font-bold text-indigo-600">₹10,500</div>
-                </div>
-
-                <!-- Pricing Row 2 -->
-                <div class="grid grid-cols-3 sm:grid-cols-4 items-center border-b border-gray-100 p-4 hover:bg-indigo-50 transition duration-150 bulk-table-row">
-                    <div class="text-left font-semibold text-lg">250+</div>
-                    <div class="text-center text-gray-600">Up to 3</div>
-                    <div class="text-right font-medium text-gray-800">₹189</div>
-                    <div class="text-right font-bold text-indigo-600">₹47,250</div>
-                </div>
-
-                <!-- Pricing Row 3 -->
-                <div class="grid grid-cols-3 sm:grid-cols-4 items-center p-4 hover:bg-indigo-50 transition duration-150 bulk-table-row">
-                    <div class="text-left font-semibold text-lg">500+</div>
-                    <div class="text-center text-gray-600">Up to 3</div>
-                    <div class="text-right font-medium text-gray-800">₹184</div>
-                    <div class="text-right font-bold text-indigo-600">₹91,875</div>
-                </div>
-            </div>
-
-            <!-- Custom Quote CTA -->
-            <div class="bg-indigo-50 p-6 rounded-xl mt-10 shadow-md">
-                <h3 class="text-2xl font-bold text-indigo-700 mb-2">Need a custom quote?</h3>
-                <p class="text-gray-700 mb-4">
-                    For quantities above 500 or specific color requirements, please **contact our sales team** for personalized pricing.
-                </p>
-                <a href="#contact-form" class="inline-block bg-pink-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-pink-600 transition duration-300 transform hover:scale-105">
-                    Request a Bulk Quote
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- NEW SECTION: Ordering Process -->
-    <section class="bg-white py-16 md:py-24 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto container-padding">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-16 text-gray-900">
-                Process of Ordering a few T-Shirts!
-            </h2>
-
-            <!-- Process Steps Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Step 1: Upload Design -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center border-t-4 border-orange-500 relative">
-                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-orange-500 text-white font-bold text-xl flex items-center justify-center rounded-full shadow-lg">1</div>
-                    <div class="mb-4 text-indigo-600 flex justify-center mt-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">Upload Design</h3>
-                    <p class="text-gray-600">Customer Action: Use our easy-to-use ERP to <a href="#contact-form" class="text-orange-600 font-semibold hover:text-orange-700">upload your design files (or mockups)</a> in the quote form.</p>
-                </div>
-
-                <!-- Step 2: Place Order -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center border-t-4 border-orange-500 relative">
-                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-orange-500 text-white font-bold text-xl flex items-center justify-center rounded-full shadow-lg">2</div>
-                    <div class="mb-4 text-indigo-600 flex justify-center mt-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2v5h-2M13 17h2v5h-2M9 17h2v5h-2M5 17h2v5H5M12 4v16M4 16h16M4 4h16V2a2 2 0 00-2-2H6a2 2 0 00-2 2v2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">Receive & Confirm Quote</h3>
-                    <p class="text-gray-600">Seller Action: We send a confirmed quote and digital mockup based on your file. Approve the order to proceed.</p>
-                </div>
-
-                <!-- Step 3: Print, Deliver -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center border-t-4 border-orange-500 relative">
-                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-orange-500 text-white font-bold text-xl flex items-center justify-center rounded-full shadow-lg">3</div>
-                    <div class="mb-4 text-indigo-600 flex justify-center mt-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3M15 11l-3-3 3-3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">We Print, Deliver</h3>
-                    <p class="text-gray-600">We handle printing & quality checks, then deliver the finished, high-quality garments to your doorstep.</p>
-                </div>
-            </div>
-
-            <!-- Video Placeholder -->
-            <div class="mt-16 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
-                <!-- This iframe simulates a video embedding (e.g., from YouTube) -->
-                <div class="aspect-w-16 aspect-h-9 relative">
-                    <img src="https://placehold.co/1280x720/0f172a/ffffff?text=Video+Placeholder%3A+Custom+Order+Walkthrough" 
-                         alt="Video demonstrating the ordering process" 
-                         class="w-full h-full object-cover">
-                    <!-- Fake Play Button for aesthetic purposes -->
-                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                        <svg class="w-20 h-20 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 3l12 9-12 9V3z"/></svg>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- NEW SECTION 6: FAQ (Accordion Style) -->
-    <section id="faq" class="bg-gray-50 py-16 md:py-24 border-t border-gray-200">
-        <div class="max-w-4xl mx-auto container-padding">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 text-gray-900">
-                Personalized T-Shirt Printing FAQs
-            </h2>
-            <p class="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                **Seller Benefit:** Reduces repeat questions. **Customer Benefit:** Quick self-service answers about printing methods.
-            </p>
-            
-            <div class="bg-white rounded-xl shadow-xl divide-y divide-gray-200">
-                
-                <!-- FAQ Item 1 -->
-                <div class="faq-item">
-                    <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150 rounded-t-xl" onclick="toggleAccordion(this)">
-                        How are custom T-Shirts printed?
-                        <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                    </button>
-                    <div class="accordion-content px-5 text-gray-600">
-                        <p>We primarily use **Direct-to-Garment (DTG)** printing for small orders and retail designs, which allows for high-detail, full-color images. For bulk orders (50+), we typically use **Screen Printing** for its durability and cost-effectiveness with simple color designs.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="faq-item">
-                    <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150" onclick="toggleAccordion(this)">
-                        What is the most popular T-Shirt printing method?
-                        <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                    </button>
-                    <div class="accordion-content px-5 text-gray-600">
-                        <p>Currently, **Screen Printing** remains the most popular method worldwide, especially for large quantity orders, due to its reliable durability, vibrant color output, and low cost per item in bulk. **DTG** is rapidly gaining popularity for smaller, highly personalized orders.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="faq-item">
-                    <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150" onclick="toggleAccordion(this)">
-                        What is the longest lasting T-Shirt printing method?
-                        <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                    </button>
-                    <div class="accordion-content px-5 text-gray-600">
-                        <p>When properly cured, **Screen Printing** provides the longest-lasting print, often outliving the shirt itself. The ink sits on top of the fabric and is very resistant to cracking and fading, making it ideal for workwear and frequent use.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="faq-item">
-                    <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150" onclick="toggleAccordion(this)">
-                        How to start a custom T-Shirt printing business?
-                        <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                    </button>
-                    <div class="accordion-content px-5 text-gray-600">
-                        <p>Starting a business requires planning! Key steps include **defining your niche** (e.g., retro designs, corporate apparel), **choosing a printing method** (DTG for low startup cost or Screen Printing for bulk), **securing a strong online platform** (like Pram Enterprises), and **marketing to your target audience**.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="faq-item">
-                    <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150 rounded-b-xl" onclick="toggleAccordion(this)">
-                        How to print custom logo on T-Shirts?
-                        <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                    </button>
-                    <div class="accordion-content px-5 text-gray-600">
-                        <p>Simply use our **Custom Quote Form** below (linked to our ERP) to upload your design and tell us your quantity. We accept high-resolution PNGs (with transparent background) or vector formats (.AI or .SVG) for the best quality print.</p>
-                    </div>
-                </div>
-
-            </div>
-            
-            <p class="text-center text-gray-600 mt-8">
-                Still have questions? <a href="#contact-form" class="text-indigo-600 font-semibold hover:text-indigo-800">Contact our support team directly.</a>
-            </p>
-
-        </div>
-    </section>
-
-    <!-- NEW SECTION 5: Help/Contact Banner (Need help?) -->
-    <section class="bg-gray-900 py-16 md:py-24 border-t border-gray-700">
-        <div class="max-w-7xl mx-auto container-padding text-center">
-            <h2 class="text-4xl md:text-5xl font-black text-white mb-3">
-                Need help with your design?
-            </h2>
-            <p class="text-2xl md:text-3xl font-extrabold text-indigo-300 mb-10">
-                We're here to help you get started!
-            </p>
-            <a href="#contact-form" class="inline-flex items-center bg-orange-500 text-white font-bold text-xl py-4 px-10 rounded-xl shadow-2xl hover:bg-orange-600 transition duration-300 transform hover:scale-105">
-                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.128a11.042 11.042 0 005.516 5.516l1.128-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                Let's Talk
-            </a>
-        </div>
-    </section>
-
-    <!-- NEW SECTION: Custom Quote Form (Enhanced for Seller Lead Capture) -->
-    <section id="contact-form" class="py-16 md:py-24 bg-white border-t border-gray-200">
-        <div class="max-w-3xl mx-auto container-padding">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4 text-gray-900">
-                Request a Custom Quote & Upload Files
-            </h2>
-            <p class="text-xl text-gray-600 text-center mb-12">
-                **Customer Benefit:** Uploading your file speeds up your quote time! **Seller Benefit:** Immediate access to design assets.
-            </p>
-
-            <form onsubmit="handleQuoteRequest(event)" class="bg-gray-50 p-8 md:p-10 rounded-xl shadow-2xl border border-indigo-100">
-                <div class="space-y-6">
-                    <!-- Name and Email -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                            <input type="text" id="name" required
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                            <input type="email" id="quote-email" required
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
-                        </div>
-                    </div>
-                    
-                    <!-- Phone and Quantity -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number (Optional)</label>
-                            <input type="tel" id="phone"
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
-                        </div>
-                        <div>
-                            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Estimated Quantity (Minimum 50)</label>
-                            <input type="number" id="quantity" required min="1" placeholder="Minimum order quantity is 1"
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
-                        </div>
-                    </div>
-                    
-                    <!-- New: File Upload Field (Important for Seller Lead Quality) -->
-                    <div>
-                        <label for="design_file" class="block text-sm font-medium text-gray-700 mb-1">Upload Design File (PNG, JPEG, PDF, AI) - Optional</label>
-                        <input type="file" id="design_file" accept=".png, .jpg, .jpeg, .pdf, .ai, .svg"
-                                class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition duration-150">
-                    </div>
-
-
-                    <!-- Project Details -->
-                    <div>
-                        <label for="details" class="block text-sm font-medium text-gray-700 mb-1">Project Details & Requirements</label>
-                        <textarea id="details" rows="4" required
-                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-                            placeholder="Describe design placement, number of print colors, fabric type, and any in-hand date requirements."></textarea>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" 
-                            class="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                        Submit Quote Request
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- New Section 4: Newsletter Signup -->
-    <section class="bg-indigo-700 py-16">
-        <div class="max-w-4xl mx-auto container-padding text-center">
-            <h2 class="text-3xl font-extrabold text-white mb-3">
-                Get 15% Off Your First Order!
-            </h2>
-            <p class="text-lg text-indigo-200 mb-8">
-                Subscribe to our newsletter for exclusive designs, discounts, and style tips.
-            </p>
-            <form onsubmit="handleSubscription(event)" class="flex flex-col sm:flex-row gap-4 justify-center">
-                <input type="email" id="email-input" placeholder="Enter your email address" required
-                       class="w-full sm:w-80 p-3 rounded-lg border-2 border-white focus:ring-2 focus:ring-pink-300 focus:border-pink-300 text-gray-900">
-                <button type="submit" 
-                        class="bg-pink-400 text-indigo-900 font-bold py-3 px-6 rounded-lg shadow-xl hover:bg-pink-300 transition duration-200 transform hover:scale-105">
-                    Subscribe
-                </button>
-            </form>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12 mt-0">
@@ -673,16 +130,16 @@
             <div>
                 <h4 class="font-semibold mb-3 text-indigo-300">Designs</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="#products" class="hover:text-white transition duration-150">Sample Gallery</a></li>
-                    <li><a href="#our-work" class="hover:text-white transition duration-150">Client Work Showcase</a></li>
-                    <li><a href="#bulk-orders" class="hover:text-white transition duration-150">Bulk Pricing</a></li>
+                    <li><a href="#products" onclick="showHome(event)" class="hover:text-white transition duration-150">Sample Gallery</a></li>
+                    <li><a href="#our-work" onclick="showHome(event)" class="hover:text-white transition duration-150">Client Work Showcase</a></li>
+                    <li><a href="#bulk-orders" onclick="showHome(event)" class="hover:text-white transition duration-150">Bulk Pricing</a></li>
                 </ul>
             </div>
             <!-- Col 3: Support -->
             <div>
                 <h4 class="font-semibold mb-3 text-indigo-300">Support</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="#faq" class="hover:text-white transition duration-150">Printing FAQs</a></li>
+                    <li><a href="#faq" onclick="showHome(event)" class="hover:text-white transition duration-150">Printing FAQs</a></li>
                     <li><a href="#" class="hover:text-white transition duration-150">Shipping & Returns</a></li>
                     <li><a href="#" class="hover:text-white transition duration-150">Sizing Chart</a></li>
                 </ul>
@@ -691,7 +148,7 @@
             <div id="contact">
                 <h4 class="font-semibold mb-3 text-indigo-300">Contact</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="#contact-form" class="hover:text-white transition duration-150">Request a Quote</a></li>
+                    <li><a href="#contact-form" onclick="showHome(event)" class="hover:text-white transition duration-150">Request a Quote</a></li>
                     <li><a href="#" class="hover:text-white transition duration-150">Email Us</a></li>
                     <li><a href="#" class="hover:text-white transition duration-150">Call Us: +91 XXXXX XXXXX</a></li>
                 </ul>
@@ -710,12 +167,13 @@
         const cartCountElement = document.getElementById('cart-count');
         const notificationBox = document.getElementById('notification-box');
         const notificationText = document.getElementById('notification-text');
+        const mainContent = document.getElementById('main-content');
         let notificationTimeout = null;
+
+        // --- Utility Functions ---
 
         /**
          * Adds a product to the simulated cart and updates the UI.
-         * @param {string} name - The name of the product.
-         * @param {number} price - The price of the product.
          */
         function addToCart(name, price) {
             console.log(`Adding ${name} ($${price}) to cart.`);
@@ -727,12 +185,11 @@
             cartCountElement.textContent = cart.length;
 
             // 3. Show a nice confirmation notification
-            showNotification(`${name} added!`, true);
+            showNotification(`${name} added to cart!`, true);
         }
-
+        
         /**
          * Handles the newsletter subscription form submission.
-         * @param {Event} event - The form submission event.
          */
         function handleSubscription(event) {
             event.preventDefault();
@@ -741,9 +198,8 @@
 
             if (email) {
                 console.log(`User subscribed with email: ${email}`);
-                // Simulate successful subscription
                 showNotification(`Success! Check your email for 15% off.`, true);
-                emailInput.value = ''; // Clear the input
+                emailInput.value = '';
             } else {
                 showNotification(`Please enter a valid email.`, false);
             }
@@ -751,46 +207,25 @@
         
         /**
          * Handles the custom quote form submission.
-         * @param {Event} event - The form submission event.
          */
         function handleQuoteRequest(event) {
             event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('quote-email').value;
             const quantity = document.getElementById('quantity').value;
-            const details = document.getElementById('details').value;
-            const designFile = document.getElementById('design_file').files[0];
             
-            let fileName = designFile ? designFile.name : 'No file uploaded';
+            // In a real app, form data would be serialized and sent to a server.
+            console.log("--- New Quote Request Submitted (Simulated) ---");
 
-            // Log data (in a real app, this would be sent to a server/CRM)
-            console.log("--- New Quote Request ---");
-            console.log(`Name: ${name}`);
-            console.log(`Email: ${email}`);
-            console.log(`Quantity: ${quantity}`);
-            console.log(`Design File: ${fileName}`);
-            console.log(`Details: ${details}`);
-            console.log("-------------------------");
-
-            // Show confirmation
             showNotification(`Quote request for ${quantity} items submitted! We'll be in touch.`, true);
-
-            // Reset the form (optional)
             event.target.reset();
         }
 
-
         /**
          * Shows a temporary notification message in the corner.
-         * @param {string} message - The message to display.
-         * @param {boolean} success - Whether the message is a success (green/indigo) or error (red).
          */
         function showNotification(message, success = true) {
-            // Clear any existing timeout
             if (notificationTimeout) {
                 clearTimeout(notificationTimeout);
                 notificationBox.classList.remove('show-notification');
-                // Give a slight delay before showing new notification for smooth transition
                 setTimeout(() => _displayNotification(message, success), 50); 
             } else {
                 _displayNotification(message, success);
@@ -798,14 +233,10 @@
         }
         
         function _displayNotification(message, success) {
-            // Set styles based on success/error
             notificationBox.classList.remove('bg-red-500', 'bg-indigo-600');
-            
-            // Change notification color based on success
             const colorClass = success ? 'bg-indigo-600' : 'bg-red-500';
             notificationBox.classList.add(colorClass);
 
-            // Change icon based on success/error
             const iconPath = success ? 
                 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' : 
                 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z';
@@ -817,10 +248,8 @@
                 ${message}
             `;
 
-            // Show the box
             notificationBox.classList.add('show-notification');
 
-            // Hide the box after 3 seconds
             notificationTimeout = setTimeout(() => {
                 notificationBox.classList.remove('show-notification');
                 notificationTimeout = null;
@@ -829,16 +258,13 @@
 
         /**
          * Toggles the accordion content when the button is clicked.
-         * @param {HTMLElement} button - The button element that was clicked.
          */
         function toggleAccordion(button) {
-            const content = button.nextElementSibling; // Get the corresponding accordion-content div
+            const content = button.nextElementSibling;
             const icon = button.querySelector('.toggle-icon');
 
-            // Check if the content is currently active (open)
             const isActive = content.classList.contains('active');
 
-            // Close all other open accordions
             document.querySelectorAll('.accordion-content.active').forEach(openContent => {
                 if (openContent !== content) {
                     openContent.classList.remove('active');
@@ -846,7 +272,6 @@
                 }
             });
 
-            // Toggle the clicked accordion
             if (!isActive) {
                 content.classList.add('active');
                 icon.classList.add('active');
@@ -855,10 +280,916 @@
                 icon.classList.remove('active');
             }
         }
+        
+        /**
+         * Replaces the main image on the Product Details page.
+         */
+        function changeProductImage(src, element) {
+            document.getElementById('main-product-image').src = src;
+            
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.product-thumb').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
 
+            // Add active class to the clicked thumbnail
+            element.classList.add('active');
+        }
+
+
+        // --- Page Content Templates ---
+
+        /**
+         * Generates the HTML for the product detail page.
+         */
+        function getProductDetailHtml(productName, price, imageSrc) {
+            // Product data mock (for demonstration)
+            const product = {
+                name: productName,
+                sku: 'UC21',
+                price: price,
+                attributes: [
+                    '180 GSM', '100% Cotton', 'Super Combed', 'Pre Shrunk',
+                    'Bio Washed', 'Unisex Ribbed Neck', 'Unisex Regular Fit', 'No Minimum Order'
+                ],
+                printingOptions: ['DTG', 'DTF', 'Vinyl', 'Embroidery'],
+                colors: ['#8b4513', '#000000', '#424242', '#38761d', '#99c4ff', '#f8d29b', '#f59e0b', '#dc2626', '#fef9c3', '#ec4899', '#fca5a5', '#60a5fa', '#d946ef', '#f472b6', '#34d399', '#4f46e5', '#a78bfa', '#f97316', '#fb7185', '#0ea5e9', '#6d28d9', '#a21caf', '#1e3a8a', '#10b981', '#fcd34d', '#9ca3af', '#94a3b8', '#ef4444', '#14b8a6', '#f0abfc'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL']
+            };
+
+            return `
+                <section class="py-16 md:py-24 bg-white">
+                    <div class="max-w-7xl mx-auto container-padding">
+                        <button onclick="showHome(event)" class="text-indigo-600 hover:text-indigo-800 font-medium mb-8 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            Back to Designs
+                        </button>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                            <!-- Left Column: Images -->
+                            <div class="space-y-4">
+                                <!-- Main Image (Placeholder simulating the main product image) -->
+                                <div class="bg-gray-100 rounded-xl overflow-hidden shadow-2xl">
+                                    <img id="main-product-image" src="https://placehold.co/800x1000/ffffff/000000?text=${product.name.replace(/\s/g, '+')}" 
+                                         alt="${product.name} Main Image" 
+                                         class="w-full h-auto object-cover">
+                                </div>
+                                <!-- Thumbnails -->
+                                <div class="flex space-x-2 overflow-x-auto p-1">
+                                    <img src="https://placehold.co/100x125/ffffff/000000?text=Front" onclick="changeProductImage(this.src, this)" class="w-20 h-24 rounded-lg product-thumb active" alt="Front view">
+                                    <img src="https://placehold.co/100x125/ffffff/000000?text=Back" onclick="changeProductImage(this.src, this)" class="w-20 h-24 rounded-lg product-thumb" alt="Back view">
+                                    <img src="https://placehold.co/100x125/ffffff/000000?text=Fabric" onclick="changeProductImage(this.src, this)" class="w-20 h-24 rounded-lg product-thumb" alt="Fabric detail">
+                                    <img src="https://placehold.co/100x125/ffffff/000000?text=Model" onclick="changeProductImage(this.src, this)" class="w-20 h-24 rounded-lg product-thumb" alt="Model wearing shirt">
+                                    <img src="https://placehold.co/100x125/ffffff/000000?text=Fit" onclick="changeProductImage(this.src, this)" class="w-20 h-24 rounded-lg product-thumb" alt="Fit detail">
+                                </div>
+                            </div>
+
+                            <!-- Right Column: Details and Actions -->
+                            <div>
+                                <h1 class="text-4xl font-black text-gray-900 mb-2">${product.name} <span class="text-xl font-semibold text-gray-500 block">(${product.sku})</span></h1>
+                                <p class="text-4xl font-bold text-indigo-600 mb-6">${price}</p>
+                                
+                                <a href="#contact-form" onclick="showHome(event)" class="inline-block bg-orange-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-orange-600 transition duration-300 transform hover:scale-[1.01] mb-8">
+                                    Get Your Free Bulk Quote &rarr;
+                                </a>
+
+                                <!-- Attributes/Features -->
+                                <div class="grid grid-cols-2 gap-y-3 mb-8">
+                                    ${product.attributes.map(attr => `
+                                        <div class="flex items-center text-gray-700 text-sm">
+                                            <svg class="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                            ${attr}
+                                        </div>
+                                    `).join('')}
+                                </div>
+
+                                <!-- Printing Options -->
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 border-t pt-6">Printing Options</h3>
+                                <div class="flex flex-wrap gap-3 mb-8">
+                                    ${product.printingOptions.map(opt => `
+                                        <span class="px-4 py-2 text-sm font-semibold rounded-full bg-indigo-100 text-indigo-700">${opt}</span>
+                                    `).join('')}
+                                </div>
+
+                                <!-- Available Colors -->
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 border-t pt-6">Available Colors</h3>
+                                <div class="flex flex-wrap gap-2 mb-8">
+                                    ${product.colors.map(color => `
+                                        <div class="w-6 h-6 rounded-full shadow border border-gray-300 cursor-pointer hover:scale-110 transition duration-150" style="background-color: ${color};" title="${color}"></div>
+                                    `).join('')}
+                                </div>
+                                
+                                <!-- Available Sizes -->
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 border-t pt-6">Available Sizes</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    ${product.sizes.map(size => `
+                                        <span class="px-3 py-1 text-sm font-semibold rounded-lg border border-gray-300 cursor-pointer hover:bg-indigo-50 transition duration-150">${size}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Highlights Section -->
+                        <div class="mt-20 border-t pt-16">
+                            <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-10">Unisex Classic T-Shirt Highlights</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                                <div class="p-4 rounded-xl">
+                                    <svg class="w-8 h-8 mx-auto mb-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                    <h4 class="font-bold text-xl mb-2 text-gray-900">Quality</h4>
+                                    <p class="text-gray-600 text-sm">The Custom Unisex Classic T-Shirts are double-stitched using state-of-the-art machines in-house using premium quality 180 GSM, cotton fabrics.</p>
+                                </div>
+                                <div class="p-4 rounded-xl">
+                                    <svg class="w-8 h-8 mx-auto mb-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a1.5 1.5 0 00-1.5 1.5v10.5M12 6a1.5 1.5 0 011.5 1.5v10.5M12 6h.01M12 18h.01M14 18h.01M10 18h.01M16 18h.01M18 18h.01M20 18h.01M22 18h.01M24 18h.01M2 18h.01M4 18h.01M6 18h.01M8 18h.01"></path></svg>
+                                    <h4 class="font-bold text-xl mb-2 text-gray-900">Printing Options</h4>
+                                    <p class="text-gray-600 text-sm">Our Print on Demand Unisex Classic T-Shirt comes with **printing options** including DTG, DTF, Embroidery, Vinyl, and Bulk T-Shirt Screen Printing.</p>
+                                </div>
+                                <div class="p-4 rounded-xl">
+                                    <svg class="w-8 h-8 mx-auto mb-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.4-8H5.4M7 13L5.4 5M7 13L4 16m3-3h10M2 20h20"></path></svg>
+                                    <h4 class="font-bold text-xl mb-2 text-gray-900">Sell Custom T-Shirts</h4>
+                                    <p class="text-gray-600 text-sm">Design and Sell Custom Unisex T-Shirts as Embroidered, Crewneck, Baggy, Designer, and Graphic Unisex T-Shirts.</p>
+                                </div>
+                            </div>
+                            <div class="text-center mt-10">
+                                <a href="#" class="inline-block bg-orange-500 text-white font-bold py-3 px-10 rounded-lg shadow-lg hover:bg-orange-600 transition duration-300">
+                                    Start Selling
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Related Products Section (Mock Content) -->
+                        <div class="mt-20 pt-16 border-t border-gray-200">
+                            <h3 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">Related Products</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/fecaca/991b1b?text=Polo+Shirt" alt="Polo Shirt" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Unisex Polo Shirt</p>
+                                    <p class="text-indigo-600">₹390.00</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/bfdbfe/1e40af?text=Sweatshirt" alt="Sweatshirt" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Heavyweight Sweatshirt</p>
+                                    <p class="text-indigo-600">₹799.00</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/ccfbf1/047857?text=Long+Sleeve" alt="Long Sleeve Tee" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Unisex Long Sleeve Tee</p>
+                                    <p class="text-indigo-600">₹290.00</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/e9d5ff/6b21a8?text=Joggers" alt="Joggers" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Custom Joggers</p>
+                                    <p class="text-indigo-600">₹850.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- You May Also Like Section (Mock Content) -->
+                        <div class="mt-16 pt-10 border-t border-gray-200">
+                            <h3 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">You May Also Like</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/ffedd5/9a3412?text=Trucker+Hat" alt="Trucker Hat" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Embroidered Trucker Hat</p>
+                                    <p class="text-indigo-600">₹450.00</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/f0f9ff/075985?text=Mug" alt="Coffee Mug" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Custom Coffee Mug</p>
+                                    <p class="text-indigo-600">₹199.00</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/d1d5db/374151?text=Tote+Bag" alt="Tote Bag" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Heavy Canvas Tote Bag</p>
+                                    <p class="text-indigo-600">₹250.00</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-xl shadow-md">
+                                    <img src="https://placehold.co/400x500/fef2f2/991b1b?text=Sticker" alt="Sticker Sheet" class="w-full h-auto rounded-lg mb-3">
+                                    <p class="font-semibold text-gray-900">Vinyl Sticker Sheets</p>
+                                    <p class="text-indigo-600">₹99.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            `;
+        }
+        
+        /**
+         * Generates the HTML for the full Home Page (All sections combined).
+         */
+        function getHomeHtml() {
+            return `
+                <!-- Hero Section (Modified for Custom Printing Focus) -->
+                <section class="bg-indigo-500 bg-opacity-90 text-white py-20 md:py-32 shadow-xl">
+                    <div class="max-w-7xl mx-auto text-center container-padding">
+                        <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight">
+                            Custom Printing Made Easy. <span class="block mt-2">Your Design. Our Quality.</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 font-light max-w-3xl mx-auto">
+                            Upload your logo, start your order, or explore professional printing options for any quantity.
+                        </p>
+                        <a href="#contact-form" onclick="scrollToSection(event)" class="inline-block bg-white text-indigo-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                            Start Your Custom Project Today
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Products Section (UPDATED to match user's Custom Print Category/Layout) -->
+                <section id="products" class="py-16 md:py-24">
+                    <div class="max-w-7xl mx-auto container-padding">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 text-gray-900">
+                            Men's Custom Print T-Shirts
+                        </h2>
+                        <p class="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
+                            Select your blank garment style below. Prices shown are for the blank item only.
+                        </p>
+
+                        <!-- Product Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            
+                            <!-- Product Card 1: Unisex Classic Crew T-Shirt -->
+                            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                                <img src="https://placehold.co/600x750/ffffff/000000?text=Custom+Print+Tee" 
+                                     alt="Unisex Classic Crew T-Shirt" 
+                                     class="w-full h-auto object-cover rounded-t-xl"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
+                                <div class="p-5 text-center">
+                                    <h3 class="text-xl font-semibold mb-2 truncate">Unisex Classic Crew T-Shirt</h3>
+                                    <div class="flex justify-center items-center space-x-1 mb-2">
+                                         <div class="w-4 h-4 rounded-full bg-red-600 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-black shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-yellow-400 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-blue-600 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-white shadow border border-gray-300"></div>
+                                         <div class="text-xs text-gray-500 ml-1">+more</div>
+                                    </div>
+                                    <p class="text-2xl font-bold text-indigo-600 mb-4">₹160.00</p>
+                                    
+                                    <a href="#" onclick="showProductDetails(event, 'Unisex Classic Crew T-Shirt', '₹160.00')" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                                        Product Details 
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                    <a href="#contact-form" onclick="scrollToSection(event)" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                                        Get Free Quote
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2: Unisex Oversized Classic T-Shirt -->
+                            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                                <img src="https://placehold.co/600x750/dbeafe/1e3a8a?text=Oversized+Tee" 
+                                     alt="Unisex Oversized Classic T-Shirt" 
+                                     class="w-full h-auto object-cover rounded-t-xl"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
+                                <div class="p-5 text-center">
+                                    <h3 class="text-xl font-semibold mb-2 truncate">Unisex Oversized Classic T-Shirt</h3>
+                                    <div class="flex justify-center items-center space-x-1 mb-2">
+                                         <div class="w-4 h-4 rounded-full bg-black shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-red-600 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-yellow-400 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-blue-600 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-pink-400 shadow border border-gray-300"></div>
+                                         <div class="text-xs text-gray-500 ml-1">+more</div>
+                                    </div>
+                                    <p class="text-2xl font-bold text-indigo-600 mb-4">₹240.00</p>
+                                    
+                                    <a href="#" onclick="showProductDetails(event, 'Unisex Oversized Classic T-Shirt', '₹240.00')" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                                        Product Details 
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                    <a href="#contact-form" onclick="scrollToSection(event)" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                                        Get Free Quote
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3: Unisex Acid Washed Oversized Tee -->
+                            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                                <img src="https://placehold.co/600x750/264653/ffffff?text=Acid+Wash+Tee" 
+                                     alt="Unisex Acid Washed Oversized Tee" 
+                                     class="w-full h-auto object-cover rounded-t-xl"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
+                                <div class="p-5 text-center">
+                                    <h3 class="text-xl font-semibold mb-2 truncate">Unisex Acid Washed Oversized Tee</h3>
+                                    <div class="flex justify-center items-center space-x-1 mb-2">
+                                         <div class="w-4 h-4 rounded-full bg-gray-700 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-green-700 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-white shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-purple-700 shadow border border-gray-300"></div>
+                                         <div class="text-xs text-gray-500 ml-1">+more</div>
+                                    </div>
+                                    <p class="text-2xl font-bold text-indigo-600 mb-4">₹340.00</p>
+                                    
+                                    <a href="#" onclick="showProductDetails(event, 'Unisex Acid Washed Oversized Tee', '₹340.00')" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                                        Product Details 
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                    <a href="#contact-form" onclick="scrollToSection(event)" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                                        Get Free Quote
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 4: Unisex Acid Washed Hoodie -->
+                            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                                <img src="https://placehold.co/600x750/1f2937/ffffff?text=Acid+Wash+Hoodie" 
+                                     alt="Unisex Acid Washed Hoodie" 
+                                     class="w-full h-auto object-cover rounded-t-xl"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
+                                <div class="p-5 text-center">
+                                    <h3 class="text-xl font-semibold mb-2 truncate">Unisex Acid Washed Hoodie</h3>
+                                    <div class="flex justify-center items-center space-x-1 mb-2">
+                                         <div class="w-4 h-4 rounded-full bg-gray-800 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-pink-400 shadow border border-gray-300"></div>
+                                         <div class="w-4 h-4 rounded-full bg-green-700 shadow border border-gray-300"></div>
+                                         <div class="text-xs text-gray-500 ml-1">+more</div>
+                                    </div>
+                                    <p class="text-2xl font-bold text-indigo-600 mb-4">₹650.00</p>
+                                    
+                                    <a href="#" onclick="showProductDetails(event, 'Unisex Acid Washed Hoodie', '₹650.00')" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                                        Product Details 
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                    <a href="#contact-form" onclick="scrollToSection(event)" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                                        Get Free Quote
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA to All Products -->
+                        <div class="text-center mt-16">
+                            <a href="#contact-form" onclick="scrollToSection(event)" class="inline-block text-lg text-indigo-600 font-semibold border-b-2 border-indigo-600 pb-1 hover:text-indigo-800 transition duration-200">
+                                Ready to use your own design? Start a quote &rarr;
+                            </a>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- New Section 1: Why Choose Us / Value Proposition -->
+                <section class="bg-white py-16 md:py-24 border-t border-gray-200">
+                    <div class="max-w-7xl mx-auto container-padding text-center">
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
+                            The Pram Enterprises Promise
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                            Commitment to quality, unique style, and thoughtful production.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Feature 1: Premium Quality -->
+                            <div class="p-6 rounded-xl bg-indigo-50 shadow-md">
+                                <div class="mb-4 text-indigo-600 flex justify-center">
+                                    <!-- Quality Icon (T-Shirt/Stitch) -->
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m-9 0V3h10v2M9 14h6m-6 4h6m-6 4h6"></path></svg>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">Premium Feel</h3>
+                                <p class="text-gray-600">Our T-shirts are made from pre-shrunk, ultra-soft combed cotton for maximum comfort and durability.</p>
+                            </div>
+
+                            <!-- Feature 2: Exclusive Designs -->
+                            <div class="p-6 rounded-xl bg-indigo-50 shadow-md">
+                                <div class="mb-4 text-indigo-600 flex justify-center">
+                                    <!-- Design/Art Icon (Palette/Brush) -->
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v2.5m0 0l-2 3h4m-4 3h4m0-3l2-3h-4"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5l-4 4-2.5 2.5L12 18l6.5-6.5L18 8.5l-4-4"></path></svg>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">Original Art</h3>
+                                <p class="text-gray-600">We handle complex design files and ensure vibrant, accurate color reproduction for your brand or idea.</p>
+                            </div>
+
+                            <!-- Feature 3: Fast & Free Shipping -->
+                            <div class="p-6 rounded-xl bg-indigo-50 shadow-md">
+                                <div class="mb-4 text-indigo-600 flex justify-center">
+                                    <!-- Delivery/Shipping Icon (Truck) -->
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">Worry-Free Buying</h3>
+                                <p class="text-gray-600">Free shipping on all custom orders over $500, plus guaranteed quality checks before final shipment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NEW SECTION 2: Explore Our Works (Gallery) -->
+                <section id="our-work" class="py-16 md:py-24 bg-gray-50 border-b border-gray-200">
+                    <div class="max-w-7xl mx-auto container-padding text-center">
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-gray-900">
+                            Explore Some Of Our Works
+                        </h2>
+                        <p class="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
+                            A gallery of finished client projects showcasing different techniques: puff print, embroidery, screen print, and high-detail DTG.
+                        </p>
+
+
+                        <!-- Gallery Grid (2x4 or 4x2 depending on screen size) -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                            <!-- Gallery Item 1: Polo Tee (Be Kind) -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/1f2937/fcd34d?text=Embroidered+Logo" 
+                                     alt="Be Kind Polo Print" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                            <!-- Gallery Item 2: Retro Hoodie (TV) -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/000000/f87171?text=DTG+Hoodie+Art" 
+                                     alt="Retro TV Heart Hoodie" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                            <!-- Gallery Item 3: Script Print (Deep Breath) -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/000000/e5e7eb?text=Puff+Print+Detail" 
+                                     alt="3D Script Puff Print" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                            <!-- Gallery Item 4: Close Up Print (Vibrant) -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/1f2937/fbbf24?text=Screen+Print+Vibrancy" 
+                                     alt="Vibrant Detail Print Close-up" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                            <!-- Gallery Item 5: Flower Hoodie -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/ede9fe/f87171?text=Embroidery+Sample" 
+                                     alt="Minimalist Flower Hoodie" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                            <!-- Gallery Item 6: Motorbike Art -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/1e3a8a/ef4444?text=Screen+Print+Art" 
+                                     alt="Sunset Motorbike Graphic Tee" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                            <!-- Gallery Item 7: Sleeve Print -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/000000/9ca3af?text=Sleeve+Branding" 
+                                     alt="Sleeve Typography Print" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                            <!-- Gallery Item 8: Bold Red Print -->
+                            <div class="overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <img src="https://placehold.co/400x400/dc2626/ffffff?text=Logo+Placement" 
+                                     alt="Bold Red and White Print" 
+                                     class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                        
+                        <a href="#contact-form" onclick="scrollToSection(event)" class="inline-block mt-10 bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                            Ready to Print? Send Us Your Files &rarr;
+                        </a>
+                    </div>
+                </section>
+
+                <!-- NEW SECTION 8: Our Equipment & Technology -->
+                <section id="technology" class="py-16 md:py-24 bg-gray-100 border-t border-gray-200">
+                    <div class="max-w-7xl mx-auto container-padding text-center">
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
+                            Our Equipment & Printing Technology
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                            We invest in state-of-the-art machinery to guarantee speed, consistency, and vibrant colors on every order.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
+                            <!-- Tech Card 1: DTG Printing -->
+                            <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-pink-500 flex items-start space-x-4">
+                                <svg class="w-10 h-10 text-pink-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-1 text-gray-900">Direct-to-Garment (DTG)</h3>
+                                    <p class="text-gray-600 text-sm">Best for intricate designs, photo-realistic prints, and small orders (1-49 units). We use industrial DTG printers for unparalleled detail and color gradients.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tech Card 2: Automatic Screen Printing -->
+                            <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-pink-500 flex items-start space-x-4">
+                                <svg class="w-10 h-10 text-pink-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7-5h2m4 0h2m4 0h2m4 0h2M2 20h20"></path></svg>
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-1 text-gray-900">Automatic Screen Printing</h3>
+                                    <p class="text-gray-600 text-sm">Ideal for high volume (50+ units) and logos with solid colors. Provides the most durable print and vibrant colors at the lowest cost per unit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NEW SECTION 7: Material & Quality Guide -->
+                <section id="materials" class="py-16 md:py-24 bg-indigo-700 bg-opacity-5 border-t border-gray-200">
+                    <div class="max-w-7xl mx-auto container-padding text-center">
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
+                            Garment Material & Quality Guide
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                            Choose the perfect fabric for your project, from soft retail wear to durable uniforms.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-left">
+                            <!-- Material Card 1: Standard Cotton -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-400">
+                                <h3 class="text-xl font-bold text-indigo-700 mb-2">Standard Combed Cotton</h3>
+                                <p class="text-sm text-gray-500 mb-3">180 GSM</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                                    <li>Soft and breathable feel.</li>
+                                    <li>Excellent surface for Screen Printing.</li>
+                                    <li>Best value for high-volume bulk orders.</li>
+                                </ul>
+                            </div>
+                            <!-- Material Card 2: Premium Heavyweight -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                                <h3 class="text-xl font-bold text-indigo-700 mb-2">Premium Heavyweight Tee</h3>
+                                <p class="text-sm text-gray-500 mb-3">220 GSM</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                                    <li>Thick, structured, and highly durable.</li>
+                                    <li>Ideal for DTG and embroidery.</li>
+                                    <li>Retail-ready quality for brand merch.</li>
+                                </ul>
+                            </div>
+                            <!-- Material Card 3: Performance Blend -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                                <h3 class="text-xl font-bold text-indigo-700 mb-2">Moisture-Wicking Poly-Blend</h3>
+                                <p class="text-sm text-gray-500 mb-3">150 GSM</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                                    <li>Lightweight, quick-drying performance.</li>
+                                    <li>Perfect for sports teams and activewear.</li>
+                                    <li>Requires specialized heat-transfer methods.</li>
+                                </ul>
+                            </div>
+                            <!-- Material Card 4: Tri-Blend -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-300">
+                                <h3 class="text-xl font-bold text-indigo-700 mb-2">Luxury Tri-Blend</h3>
+                                <p class="text-sm text-gray-500 mb-3">165 GSM</p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                                    <li>Cotton, Polyester, and Rayon blend.</li>
+                                    <li>The softest, most vintage-style feel.</li>
+                                    <li>Great drape and comfort for high-end merch.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact-form" onclick="scrollToSection(event)" class="inline-block mt-10 text-lg text-indigo-600 font-semibold border-b-2 border-indigo-600 pb-1 hover:text-indigo-800 transition duration-200">
+                            Need help choosing a fabric? Talk to an expert &rarr;
+                        </a>
+
+                    </div>
+                </section>
+
+                <!-- New Section 3: Bulk Orders / Custom Printing (Based on user image data) -->
+                <section id="bulk-orders" class="py-16 md:py-24 bg-gray-100 border-t border-gray-200">
+                    <div class="max-w-7xl mx-auto container-padding text-center">
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
+                            Bulk T-Shirt Printing Pricing
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                            **Seller Benefit:** Clear pricing reduces inquiry volume. **Customer Benefit:** Transparent cost structure for planning.
+                        </p>
+
+                        <!-- Pricing Table -->
+                        <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
+                            <div class="grid grid-cols-3 sm:grid-cols-4 font-bold text-lg text-white bg-indigo-700 p-4 bulk-table-header">
+                                <div class="text-left">Quantity</div>
+                                <div class="text-center">Print Colors</div>
+                                <div class="text-right">Per Unit Cost</div>
+                                <div class="text-right">Total Cost (Approx.)</div>
+                            </div>
+                            
+                            <!-- Pricing Row 1 -->
+                            <div class="grid grid-cols-3 sm:grid-cols-4 items-center border-b border-gray-100 p-4 hover:bg-indigo-50 transition duration-150 bulk-table-row">
+                                <div class="text-left font-semibold text-lg">50+</div>
+                                <div class="text-center text-gray-600">Up to 3</div>
+                                <div class="text-right font-medium text-gray-800">₹210</div>
+                                <div class="text-right font-bold text-indigo-600">₹10,500</div>
+                            </div>
+
+                            <!-- Pricing Row 2 -->
+                            <div class="grid grid-cols-3 sm:grid-cols-4 items-center border-b border-gray-100 p-4 hover:bg-indigo-50 transition duration-150 bulk-table-row">
+                                <div class="text-left font-semibold text-lg">250+</div>
+                                <div class="text-center text-gray-600">Up to 3</div>
+                                <div class="text-right font-medium text-gray-800">₹189</div>
+                                <div class="text-right font-bold text-indigo-600">₹47,250</div>
+                            </div>
+
+                            <!-- Pricing Row 3 -->
+                            <div class="grid grid-cols-3 sm:grid-cols-4 items-center p-4 hover:bg-indigo-50 transition duration-150 bulk-table-row">
+                                <div class="text-left font-semibold text-lg">500+</div>
+                                <div class="text-center text-gray-600">Up to 3</div>
+                                <div class="text-right font-medium text-gray-800">₹184</div>
+                                <div class="text-right font-bold text-indigo-600">₹91,875</div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Quote CTA -->
+                        <div class="bg-indigo-50 p-6 rounded-xl mt-10 shadow-md">
+                            <h3 class="text-2xl font-bold text-indigo-700 mb-2">Need a custom quote?</h3>
+                            <p class="text-gray-700 mb-4">
+                                For quantities above 500 or specific color requirements, please **contact our sales team** for personalized pricing.
+                            </p>
+                            <a href="#contact-form" onclick="scrollToSection(event)" class="inline-block bg-pink-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-pink-600 transition duration-300 transform hover:scale-105">
+                                Request a Bulk Quote
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- NEW SECTION: Ordering Process -->
+                <section class="bg-white py-16 md:py-24 border-t border-gray-200">
+                    <div class="max-w-7xl mx-auto container-padding">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-16 text-gray-900">
+                            Process of Ordering a few T-Shirts!
+                        </h2>
+
+                        <!-- Process Steps Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            
+                            <!-- Step 1: Upload Design -->
+                            <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center border-t-4 border-orange-500 relative">
+                                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-orange-500 text-white font-bold text-xl flex items-center justify-center rounded-full shadow-lg">1</div>
+                                <div class="mb-4 text-indigo-600 flex justify-center mt-4">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">Upload Design</h3>
+                                <p class="text-gray-600">Customer Action: Use our easy-to-use ERP to <a href="#contact-form" onclick="scrollToSection(event)" class="text-orange-600 font-semibold hover:text-orange-700">upload your design files (or mockups)</a> in the quote form.</p>
+                            </div>
+
+                            <!-- Step 2: Place Order -->
+                            <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center border-t-4 border-orange-500 relative">
+                                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-orange-500 text-white font-bold text-xl flex items-center justify-center rounded-full shadow-lg">2</div>
+                                <div class="mb-4 text-indigo-600 flex justify-center mt-4">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2v5h-2M13 17h2v5h-2M9 17h2v5h-2M5 17h2v5H5M12 4v16M4 16h16M4 4h16V2a2 2 0 00-2-2H6a2 2 0 00-2 2v2z"></path></svg>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">Receive & Confirm Quote</h3>
+                                <p class="text-gray-600">Seller Action: We send a confirmed quote and digital mockup based on your file. Approve the order to proceed.</p>
+                            </div>
+
+                            <!-- Step 3: Print, Deliver -->
+                            <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center border-t-4 border-orange-500 relative">
+                                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-orange-500 text-white font-bold text-xl flex items-center justify-center rounded-full shadow-lg">3</div>
+                                <div class="mb-4 text-indigo-600 flex justify-center mt-4">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3M15 11l-3-3 3-3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">We Print, Deliver</h3>
+                                <p class="text-gray-600">We handle printing & quality checks, then deliver the finished, high-quality garments to your doorstep.</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Placeholder -->
+                        <div class="mt-16 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+                            <!-- This iframe simulates a video embedding (e.g., from YouTube) -->
+                            <div class="aspect-w-16 aspect-h-9 relative">
+                                <img src="https://placehold.co/1280x720/0f172a/ffffff?text=Video+Placeholder%3A+Custom+Order+Walkthrough" 
+                                     alt="Video demonstrating the ordering process" 
+                                     class="w-full h-full object-cover">
+                                <!-- Fake Play Button for aesthetic purposes -->
+                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                                    <svg class="w-20 h-20 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 3l12 9-12 9V3z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- NEW SECTION 6: FAQ (Accordion Style) -->
+                <section id="faq" class="bg-gray-50 py-16 md:py-24 border-t border-gray-200">
+                    <div class="max-w-4xl mx-auto container-padding">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 text-gray-900">
+                            Personalized T-Shirt Printing FAQs
+                        </h2>
+                        <p class="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
+                            **Seller Benefit:** Reduces repeat questions. **Customer Benefit:** Quick self-service answers about printing methods.
+                        </p>
+                        
+                        <div class="bg-white rounded-xl shadow-xl divide-y divide-gray-200">
+                            
+                            <!-- FAQ Item 1 -->
+                            <div class="faq-item">
+                                <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150 rounded-t-xl" onclick="toggleAccordion(this)">
+                                    How are custom T-Shirts printed?
+                                    <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                </button>
+                                <div class="accordion-content px-5 text-gray-600">
+                                    <p>We primarily use **Direct-to-Garment (DTG)** printing for small orders and retail designs, which allows for high-detail, full-color images. For bulk orders (50+), we typically use **Screen Printing** for its durability and cost-effectiveness with simple color designs.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 2 -->
+                            <div class="faq-item">
+                                <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150" onclick="toggleAccordion(this)">
+                                    What is the most popular T-Shirt printing method?
+                                    <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                </button>
+                                <div class="accordion-content px-5 text-gray-600">
+                                    <p>Currently, **Screen Printing** remains the most popular method worldwide, especially for large quantity orders, due to its reliable durability, vibrant color output, and low cost per item in bulk. **DTG** is rapidly gaining popularity for smaller, highly personalized orders.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 3 -->
+                            <div class="faq-item">
+                                <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150" onclick="toggleAccordion(this)">
+                                    What is the longest lasting T-Shirt printing method?
+                                    <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                </button>
+                                <div class="accordion-content px-5 text-gray-600">
+                                    <p>When properly cured, **Screen Printing** provides the longest-lasting print, often outliving the shirt itself. The ink sits on top of the fabric and is very resistant to cracking and fading, making it ideal for workwear and frequent use.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 4 -->
+                            <div class="faq-item">
+                                <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150" onclick="toggleAccordion(this)">
+                                    How to start a custom T-Shirt printing business?
+                                    <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                </button>
+                                <div class="accordion-content px-5 text-gray-600">
+                                    <p>Starting a business requires planning! Key steps include **defining your niche** (e.g., retro designs, corporate apparel), **choosing a printing method** (DTG for low startup cost or Screen Printing for bulk), **securing a strong online platform** (like Pram Enterprises), and **marketing to your target audience**.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 5 -->
+                            <div class="faq-item">
+                                <button class="faq-toggle w-full flex justify-between items-center p-5 text-lg font-semibold text-gray-800 hover:bg-gray-50 transition duration-150 rounded-b-xl" onclick="toggleAccordion(this)">
+                                    How to print custom logo on T-Shirts?
+                                    <svg class="w-6 h-6 text-indigo-600 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                </button>
+                                <div class="accordion-content px-5 text-gray-600">
+                                    <p>Simply use our **Custom Quote Form** below (linked to our ERP) to upload your design and tell us your quantity. We accept high-resolution PNGs (with transparent background) or vector formats (.AI or .SVG) for the best quality print.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <p class="text-center text-gray-600 mt-8">
+                            Still have questions? <a href="#contact-form" onclick="scrollToSection(event)" class="text-indigo-600 font-semibold hover:text-indigo-800">Contact our support team directly.</a>
+                        </p>
+
+                    </div>
+                </section>
+
+                <!-- NEW SECTION 5: Help/Contact Banner (Need help?) -->
+                <section class="bg-gray-900 py-16 md:py-24 border-t border-gray-700">
+                    <div class="max-w-7xl mx-auto container-padding text-center">
+                        <h2 class="text-4xl md:text-5xl font-black text-white mb-3">
+                            Need help with your design?
+                        </h2>
+                        <p class="text-2xl md:text-3xl font-extrabold text-indigo-300 mb-10">
+                            We're here to help you get started!
+                        </p>
+                        <a href="#contact-form" onclick="scrollToSection(event)" class="inline-flex items-center bg-orange-500 text-white font-bold text-xl py-4 px-10 rounded-xl shadow-2xl hover:bg-orange-600 transition duration-300 transform hover:scale-105">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.128a11.042 11.042 0 005.516 5.516l1.128-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            Let's Talk
+                        </a>
+                    </div>
+                </section>
+
+                <!-- NEW SECTION: Custom Quote Form (Enhanced for Seller Lead Capture) -->
+                <section id="contact-form" class="py-16 md:py-24 bg-white border-t border-gray-200">
+                    <div class="max-w-3xl mx-auto container-padding">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4 text-gray-900">
+                            Request a Custom Quote & Upload Files
+                        </h2>
+                        <p class="text-xl text-gray-600 text-center mb-12">
+                            **Customer Benefit:** Uploading your file speeds up your quote time! **Seller Benefit:** Immediate access to design assets.
+                        </p>
+
+                        <form onsubmit="handleQuoteRequest(event)" class="bg-gray-50 p-8 md:p-10 rounded-xl shadow-2xl border border-indigo-100">
+                            <div class="space-y-6">
+                                <!-- Name and Email -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                        <input type="text" id="name" required
+                                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                        <input type="email" id="quote-email" required
+                                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                </div>
+                                
+                                <!-- Phone and Quantity -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number (Optional)</label>
+                                        <input type="tel" id="phone"
+                                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                    <div>
+                                        <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Estimated Quantity (Minimum 50)</label>
+                                        <input type="number" id="quantity" required min="1" placeholder="Minimum order quantity is 1"
+                                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                </div>
+                                
+                                <!-- New: File Upload Field (Important for Seller Lead Quality) -->
+                                <div>
+                                    <label for="design_file" class="block text-sm font-medium text-gray-700 mb-1">Upload Design File (PNG, JPEG, PDF, AI) - Optional</label>
+                                    <input type="file" id="design_file" accept=".png, .jpg, .jpeg, .pdf, .ai, .svg"
+                                            class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition duration-150">
+                                </div>
+
+
+                                <!-- Project Details -->
+                                <div>
+                                    <label for="details" class="block text-sm font-medium text-gray-700 mb-1">Project Details & Requirements</label>
+                                    <textarea id="details" rows="4" required
+                                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                                        placeholder="Describe design placement, number of print colors, fabric type, and any in-hand date requirements."></textarea>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" 
+                                        class="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                    Submit Quote Request
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- New Section 4: Newsletter Signup -->
+                <section class="bg-indigo-700 py-16">
+                    <div class="max-w-4xl mx-auto container-padding text-center">
+                        <h2 class="text-3xl font-extrabold text-white mb-3">
+                            Get 15% Off Your First Order!
+                        </h2>
+                        <p class="text-lg text-indigo-200 mb-8">
+                            Subscribe to our newsletter for exclusive designs, discounts, and style tips.
+                        </p>
+                        <form onsubmit="handleSubscription(event)" class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <input type="email" id="email-input" placeholder="Enter your email address" required
+                                   class="w-full sm:w-80 p-3 rounded-lg border-2 border-white focus:ring-2 focus:ring-pink-300 focus:border-pink-300 text-gray-900">
+                            <button type="submit" 
+                                    class="bg-pink-400 text-indigo-900 font-bold py-3 px-6 rounded-lg shadow-xl hover:bg-pink-300 transition duration-200 transform hover:scale-105">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </section>
+            `;
+        }
+
+        // --- Navigation and Initialization Logic ---
+
+        /**
+         * Loads the home page content into the main content container.
+         * @param {Event} event - The click event.
+         */
+        function showHome(event) {
+            if (event) {
+                event.preventDefault(); // Prevent default link behavior
+            }
+            mainContent.innerHTML = getHomeHtml();
+            
+            // Re-apply scroll logic for hash links if the user clicked a navigation link
+            if (event && event.currentTarget.hash) {
+                const targetId = event.currentTarget.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        
+        /**
+         * Loads the product detail page content into the main content container.
+         * @param {Event} event - The click event.
+         * @param {string} name - Product name.
+         * @param {string} price - Product price.
+         */
+        function showProductDetails(event, name, price) {
+            event.preventDefault();
+            mainContent.innerHTML = getProductDetailHtml(name, price);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        /**
+         * Handles scroll-to-section links, primarily for the home page.
+         * @param {Event} event - The click event.
+         */
+        function scrollToSection(event) {
+            event.preventDefault();
+            const targetId = event.currentTarget.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // --- Initialization ---
 
         // Initialize cart count on load
         cartCountElement.textContent = cart.length;
+
+        // Load home content when the script runs (Page Load)
+        window.onload = function() {
+            showHome();
+        };
 
     </script>
 
