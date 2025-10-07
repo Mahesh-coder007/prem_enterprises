@@ -118,84 +118,129 @@
         </div>
     </section>
 
-    <!-- Products Section (Repurposed as Design Samples) -->
+    <!-- Products Section (UPDATED to match user's Custom Print Category/Layout) -->
     <section id="products" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto container-padding">
             <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 text-gray-900">
-                Ready-to-Print Design Samples
+                Men's Custom Print T-Shirts
             </h2>
             <p class="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                See the print quality you can expect! These retail designs showcase our Direct-to-Garment (DTG) capabilities for small orders.
+                Select your blank garment style below. Prices shown are for the blank item only.
             </p>
 
             <!-- Product Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 
-                <!-- Product Card 1: The Cosmic Traveler -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group">
-                    <img src="https://placehold.co/600x750/1e3a8a/ffffff?text=Cosmic+Tee" 
-                         alt="The Cosmic Traveler T-Shirt" 
-                         class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500 rounded-t-xl"
+                <!-- Product Card 1: Unisex Classic Crew T-Shirt -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                    <img src="https://placehold.co/600x750/ffffff/000000?text=Custom+Print+Tee" 
+                         alt="Unisex Classic Crew T-Shirt" 
+                         class="w-full h-auto object-cover rounded-t-xl"
                          onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
                     <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-1 truncate">Cosmic Traveler</h3>
-                        <p class="text-gray-500 mb-3">High-Detail DTG Sample</p>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">$29.99</p>
-                        <button onclick="addToCart('Cosmic Traveler Tee', 29.99)" 
-                                class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            Add Sample to Cart
-                        </button>
+                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Classic Crew T-Shirt</h3>
+                        <div class="flex justify-center items-center space-x-1 mb-2">
+                             <div class="w-4 h-4 rounded-full bg-red-600 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-black shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-yellow-400 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-blue-600 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-white shadow border border-gray-300"></div>
+                             <div class="text-xs text-gray-500 ml-1">+more</div>
+                        </div>
+                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹160.00</p>
+                        
+                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                            Product Details 
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                            Get Free Quote
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Product Card 2: Minimalist Wave -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group">
-                    <img src="https://placehold.co/600x750/dbeafe/1e3a8a?text=Wave+Design" 
-                         alt="Minimalist Wave T-Shirt" 
-                         class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500 rounded-t-xl"
+                <!-- Product Card 2: Unisex Oversized Classic T-Shirt -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                    <img src="https://placehold.co/600x750/dbeafe/1e3a8a?text=Oversized+Tee" 
+                         alt="Unisex Oversized Classic T-Shirt" 
+                         class="w-full h-auto object-cover rounded-t-xl"
                          onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
                     <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-1 truncate">Minimalist Wave</h3>
-                        <p class="text-gray-500 mb-3">Simple/Geometric Print</p>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">$24.99</p>
-                        <button onclick="addToCart('Minimalist Wave Tee', 24.99)" 
-                                class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            Add Sample to Cart
-                        </button>
+                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Oversized Classic T-Shirt</h3>
+                        <div class="flex justify-center items-center space-x-1 mb-2">
+                             <div class="w-4 h-4 rounded-full bg-black shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-red-600 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-yellow-400 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-blue-600 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-pink-400 shadow border border-gray-300"></div>
+                             <div class="text-xs text-gray-500 ml-1">+more</div>
+                        </div>
+                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹240.00</p>
+                        
+                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                            Product Details 
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                            Get Free Quote
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Product Card 3: Vintage Typography -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group">
-                    <img src="https://placehold.co/600x750/fca5a5/7f1d1d?text=Vintage+Type" 
-                         alt="Vintage Typography T-Shirt" 
-                         class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500 rounded-t-xl"
+                <!-- Product Card 3: Unisex Acid Washed Oversized Tee -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                    <img src="https://placehold.co/600x750/264653/ffffff?text=Acid+Wash+Tee" 
+                         alt="Unisex Acid Washed Oversized Tee" 
+                         class="w-full h-auto object-cover rounded-t-xl"
                          onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
                     <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-1 truncate">Vintage Typography</h3>
-                        <p class="text-gray-500 mb-3">Screen Print Mockup</p>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">$32.50</p>
-                        <button onclick="addToCart('Vintage Typography Tee', 32.50)" 
-                                class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            Add Sample to Cart
-                        </button>
+                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Acid Washed Oversized Tee</h3>
+                        <div class="flex justify-center items-center space-x-1 mb-2">
+                             <div class="w-4 h-4 rounded-full bg-gray-700 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-green-700 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-white shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-purple-700 shadow border border-gray-300"></div>
+                             <div class="text-xs text-gray-500 ml-1">+more</div>
+                        </div>
+                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹340.00</p>
+                        
+                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                            Product Details 
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                            Get Free Quote
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Product Card 4: Abstract Nature -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group">
-                    <img src="https://placehold.co/600x750/34d399/065f46?text=Nature+Sketch" 
-                         alt="Abstract Nature T-Shirt" 
-                         class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500 rounded-t-xl"
+                <!-- Product Card 4: Unisex Acid Washed Hoodie -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group border border-gray-100">
+                    <img src="https://placehold.co/600x750/1f2937/ffffff?text=Acid+Wash+Hoodie" 
+                         alt="Unisex Acid Washed Hoodie" 
+                         class="w-full h-auto object-cover rounded-t-xl"
                          onerror="this.onerror=null; this.src='https://placehold.co/600x750/e0e7ff/1e3a8a?text=Image+Not+Found'">
                     <div class="p-5 text-center">
-                        <h3 class="text-xl font-semibold mb-1 truncate">Abstract Nature</h3>
-                        <p class="text-gray-500 mb-3">Vibrant Color Test Print</p>
-                        <p class="text-2xl font-bold text-indigo-600 mb-4">$27.00</p>
-                        <button onclick="addToCart('Abstract Nature Tee', 27.00)" 
-                                class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            Add Sample to Cart
-                        </button>
+                        <h3 class="text-xl font-semibold mb-2 truncate">Unisex Acid Washed Hoodie</h3>
+                        <div class="flex justify-center items-center space-x-1 mb-2">
+                             <div class="w-4 h-4 rounded-full bg-gray-800 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-pink-400 shadow border border-gray-300"></div>
+                             <div class="w-4 h-4 rounded-full bg-green-700 shadow border border-gray-300"></div>
+                             <div class="text-xs text-gray-500 ml-1">+more</div>
+                        </div>
+                        <p class="text-2xl font-bold text-indigo-600 mb-4">₹650.00</p>
+                        
+                        <a href="#" class="w-full inline-flex justify-center items-center bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition duration-200 mb-2">
+                            Product Details 
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="#contact-form" class="w-full inline-flex justify-center items-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                            Get Free Quote
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
                     </div>
                 </div>
             </div>
